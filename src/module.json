@@ -1,31 +1,33 @@
 {
-  "name": "brokentail-utility-belt",
-  "title": "brokentail-utility-belt",
-  "description": "A collection of simple QOL and utilities.",
-  "systems": [],
-  "version": "0.1.0",
-  "author": "",
-  "authors": [
-    {
-      "name": "",
-      "email": "",
-      "url": ""
-    }
-  ],
-  "scripts": [],
-  "esmodules": ["brokentail-utility-belt.js"],
-  "styles": [
-    "brokentail_utility_belt.css"
-  ],
-  "packs": [],
-  "languages": [],
-  "minimumCoreVersion": "0.5.0",
-  "compatibleCoreVersion": "0.5.4",
-  "url": "",
-  "manifest": "",
-  "download": "",
-  "license": "",
-  "readme": "",
-  "bugs": "",
-  "changelog": ""
+	"name": "brokentail-utility-belt",
+	"title": "brokentail-utility-belt",
+	"description": "A collection of simple QOL and utilities.",
+	"systems": [],
+	"version": "0.1.1",
+	"author": "",
+	"authors": [
+		{
+			"name": "",
+			"email": "",
+			"url": ""
+		}
+	],
+	"scripts": [],
+	"esmodules": [
+		"brokentail-utility-belt.js"
+	],
+	"styles": [
+		"brokentail_utility_belt.css"
+	],
+	"packs": [],
+	"languages": [],
+	"minimumCoreVersion": "0.5.4",
+	"compatibleCoreVersion": "0.5.4",
+	"url": "https://github.com/nipper/brokentail-utility-belt",
+	"manifest": "https://raw.githubusercontent.com/nipper/brokentail-utility-belt/master/src/module.json",
+	"download": "https://raw.githubusercontent.com/nipper/brokentail-utility-belt/v0.1.1/package/brokentail-utility-belt-v0.1.1.zip",
+	"license": "",
+	"readme": "",
+	"bugs": "",
+	"changelog": ""
 }
