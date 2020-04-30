@@ -64,7 +64,6 @@ Hooks.on("renderCombatTracker", (app, html) => {
   if (!game.combat) {
     return;
   }
-  console.log("rendering combat track");
   const combatTrackerButton =
     '<a id=\'but-combatTrackerBtn\' title="Open Combat Tracker" data-control="openTracker">\n' +
     '                <i class="fas fa-external-link-alt"></i>\n' +

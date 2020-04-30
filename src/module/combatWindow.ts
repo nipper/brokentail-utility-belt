@@ -102,9 +102,12 @@ export class CombatWindow extends Application {
     const targets = $(html).find(".combat_window_actor");
     targets.on("click", (ev) => {
       let combatantId = ev.target.getAttribute("data-id");
-      game.combat.combatants
-        .filter((u) => u.actor.id === combatantId)[0]
-        .actor.sheet.render(true);
+      let combatant = game.combat.getCombatantByToken(combatantId);
+      combatant;
+      if (combatant.players.map((u) => u.id).include(combatantId))
+        game.combat.combatants
+          .filter((u) => u.actor.id === combatantId)[0]
+          .actor.sheet.render(true);
     });
   }
 }
