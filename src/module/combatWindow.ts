@@ -14,9 +14,15 @@ function decorate_combatants(combatant) {
   let hp_step = Math.floor(current_hp / (max_hp / 5));
   const chart_blocks = ["", "▁", "▂", "▃", "▆", "▇"];
 
-  combatant.is_blooded = is_blooded;
-  combatant.chart_block = chart_blocks[hp_step];
-  combatant.is_dead = current_hp <= 0;
+  if (game.user.isGM) {
+    combatant.is_blooded = is_blooded;
+    combatant.chart_block = chart_blocks[hp_step];
+    combatant.is_dead = current_hp <= 0;
+  } else {
+    combatant.is_blooded = false;
+    combatant.chart_block = "";
+    combatant.is_dead = false;
+  }
   combatant.icon_url = combatant.token.img;
   combatant.use_icons = game.settings.get("brokentail-utility-belt", "useIcon");
 
