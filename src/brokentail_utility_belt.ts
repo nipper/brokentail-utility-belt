@@ -89,7 +89,7 @@ Hooks.on("updateCombat", async (combat) => {
 	let token_id = game.combat.combatant._id;
 	ChatMessage.create(
 		{
-			user: game.users.players.filter(u => u.isGM)[0].id,
+			user: game.user,
 			speaker: 2,
 			content: `<a data-id='${token_id}' id='token_link'>${token_name}</a>'s turn. Please make your move.`,
 			whisper: game.combat.combatant.players.map((u) => u.data._id),
