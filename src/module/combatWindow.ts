@@ -4,11 +4,13 @@ function decorate_combatants(combatant) {
     let is_blooded = current_hp <= max_hp / 2;
     let hp_step = Math.floor(current_hp / (max_hp / 5));
     const chart_blocks = ["", "▁", "▂", "▃", "▆", "▇"];
+
     combatant.is_blooded = is_blooded;
     combatant.chart_block = chart_blocks[hp_step];
     combatant.is_dead = current_hp <= 0;
     combatant.icon_url = combatant.token.img;
     combatant.use_icons = game.settings.get("brokentail-utility-belt", "useIcon");
+
     switch (hp_step) {
         case 5:
             combatant.bar_color = "green";
@@ -19,12 +21,15 @@ function decorate_combatants(combatant) {
         default:
             combatant.bar_color = "red";
     }
+
     return combatant;
 }
+
 export class CombatWindow extends Application {
     constructor(options = {}) {
         super(options);
     }
+
     static get defaultOptions() {
         const options = super.defaultOptions;
         options.title = "Combat Order";
@@ -41,6 +46,7 @@ export class CombatWindow extends Application {
         options.height = 300;
         return options;
     }
+
     async getData() {
         if (!game.combat) {
             return {
@@ -48,35 +54,40 @@ export class CombatWindow extends Application {
                 message: "There isn't an active combat.",
             };
         }
-        if (game.combat.current.round === 0) {
+
+        if (game.combat.round === 0) {
             return {
                 isCombat: false,
                 message: "The combat hasn't started.",
             };
         }
+
         if (game.combat.combatants.length === 0) {
             return {
                 isCombat: false,
                 message: "There are no active combatants.",
             };
         }
+
         let combatants = game.combat.turns
             .slice(0, game.combat.turn)
             .concat(game.combat.turns.slice(game.combat.turn))
             .map(decorate_combatants);
+
         return {
             isCombat: true,
             combatants: combatants,
             empty: combatants.length === 0,
         };
     }
+
     activateListeners(html) {
         const targets = $(html).find(".combat_window_actor");
         targets.on("mouseenter", (_) => {
             console.log("enter");
         });
         targets.on("click", (ev) => {
-            let combatantId = ev.target.dataset.id;
+            let combatantId = ev.target.id;
             game.combat.combatants
                 .filter((u) => u._id === combatantId)[0]
                 .actor.sheet.render(true);

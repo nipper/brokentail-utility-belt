@@ -1,33 +1,14 @@
 {
 	"name": "brokentail-utility-belt",
-	"title": "brokentail-utility-belt",
-	"description": "A collection of simple QOL and utilities.",
-	"systems": [],
-	"version": "0.1.1",
-	"author": "",
-	"authors": [
-		{
-			"name": "",
-			"email": "",
-			"url": ""
-		}
-	],
+	"title": "Brokentail's Utilities",
+	"description": "Adds customizable hotkeys for switching between layers and tools.",
+	"version": "1.5",
+	"minimumCoreVersion": "0.5.5",
+	"compatibleCoreVersion": "0.5.5",
+	"author": "Moerill",
 	"scripts": [],
-	"esmodules": [
-		"brokentail-utility-belt.js"
-	],
-	"styles": [
-		"brokentail_utility_belt.css"
-	],
-	"packs": [],
-	"languages": [],
-	"minimumCoreVersion": "0.5.4",
-	"compatibleCoreVersion": "0.5.4",
-	"url": "https://github.com/nipper/brokentail-utility-belt",
-	"manifest": "https://raw.githubusercontent.com/nipper/brokentail-utility-belt/master/src/module.json",
-	"download": "https://raw.githubusercontent.com/nipper/brokentail-utility-belt/v0.1.1/package/brokentail-utility-belt-v0.1.1.zip",
-	"license": "",
-	"readme": "",
-	"bugs": "",
-	"changelog": ""
-}
+	"esmodules": ["brokentail_utility_belt.js"],
+	"url": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys",
+	"manifest": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys/raw/master/module.json",
+	"download": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys/-/raw/v1.5/dist/layer-hotkeys.zip"
+}t
