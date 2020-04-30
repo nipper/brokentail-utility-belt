@@ -1,3 +1,6 @@
+array_rotator = function (array_to_rotate, n) {
+    return array_to_rotate.slice(n, array_to_rotate.length).concat(array_to_rotate.slice(0, n));
+};
 function decorate_combatants(combatant) {
     const current_hp = combatant.actor.data.data.attributes.hp.value;
     const max_hp = combatant.actor.data.data.attributes.hp.max;
@@ -34,7 +37,7 @@ export class CombatWindow extends Application {
             "modules/brokentail-utility-belt/templates/combat_window.hbs";
         options.popOut = true;
         options.resizable = true;
-        options.classes = ["but-window", "sidebar-popout"];
+        options.classes = ["but-combat-window", "sidebar-popout"];
         options.left = 115;
         options.top = 70;
         options.width = 200;
@@ -48,7 +51,7 @@ export class CombatWindow extends Application {
                 message: "There isn't an active combat.",
             };
         }
-        if (game.combat.current.round === 0) {
+        if (game.combat.round === 0) {
             return {
                 isCombat: false,
                 message: "The combat hasn't started.",
@@ -72,13 +75,11 @@ export class CombatWindow extends Application {
     }
     activateListeners(html) {
         const targets = $(html).find(".combat_window_actor");
-        targets.on("mouseenter", (_) => {
-            console.log("enter");
-        });
         targets.on("click", (ev) => {
-            let combatantId = ev.target.dataset.id;
-            game.combat.combatants
-                .filter((u) => u._id === combatantId)[0]
+            let combatantId = ev.target.getAttribute("data-id");
+            game.combat
+                .combatants
+                .filter(u => u.actor.id === combatantId)[0]
                 .actor.sheet.render(true);
         });
     }

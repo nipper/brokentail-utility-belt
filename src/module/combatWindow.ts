@@ -1,3 +1,7 @@
+const array_rotator = function(array_to_rotate: Array<any>,n: number): Array<any> {
+    return array_to_rotate.slice(n, array_to_rotate.length).concat(array_to_rotate.slice(0, n));
+};
+
 function decorate_combatants(combatant) {
     const current_hp = combatant.actor.data.data.attributes.hp.value;
     const max_hp = combatant.actor.data.data.attributes.hp.max;
@@ -69,9 +73,8 @@ export class CombatWindow extends Application {
             };
         }
 
-        let combatants = game.combat.turns
-            .slice(0, game.combat.turn)
-            .concat(game.combat.turns.slice(game.combat.turn))
+        let combatants =
+            array_rotator(game.combat.turns,game.combat.turn)
             .map(decorate_combatants);
 
         return {
