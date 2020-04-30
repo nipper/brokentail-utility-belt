@@ -1,18 +1,15 @@
-const array_rotator = function (
-  array_to_rotate: Array<any>,
-  n: number
-): Array<any> {
+const array_rotator = function (array_to_rotate: Any[], n: number): Any[] {
   return array_to_rotate
     .slice(n, array_to_rotate.length)
     .concat(array_to_rotate.slice(0, n));
 };
 
 function decorate_combatants(combatant) {
-  const current_hp = combatant.actor.data.data.attributes.hp.value;
-  const max_hp = combatant.actor.data.data.attributes.hp.max;
-  let is_blooded = current_hp <= max_hp / 2;
-  let hp_step = Math.floor(current_hp / (max_hp / 5));
-  const chart_blocks = ["", "▁", "▂", "▃", "▆", "▇"];
+  const current_hp: number = combatant.actor.data.data.attributes.hp.value;
+  const max_hp: number = combatant.actor.data.data.attributes.hp.max;
+  let is_blooded: boolean = current_hp <= max_hp / 2;
+  let hp_step: number = Math.floor(current_hp / (max_hp / 5));
+  const chart_blocks: String[] = ["", "▁", "▂", "▃", "▆", "▇"];
 
   if (game.user.isGM) {
     combatant.is_blooded = is_blooded;
@@ -57,8 +54,8 @@ export class CombatWindow extends Application {
     options.classes = ["but-combat-window", "sidebar-popout"];
     options.left = 115;
     options.top = 70;
-    options.width = 200;
-    options.height = 300;
+    options.width = 400;
+    options.height = 50;
     return options;
   }
 
