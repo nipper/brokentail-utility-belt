@@ -84,18 +84,28 @@ Hooks.on("renderCombatTracker", (app, html) => {
 
 // Add any additional hooks if necessary
 Hooks.on("updateCombat", async (combat) => {
-	let token_name = combat.combatant.name;
+	if(!game.user.isGM){
+		return;
+	}
 
+	let token_name = combat.combatant.name;
 	let token_id = game.combat.combatant._id;
-	ChatMessage.create(
-		{
-			user: game.user,
-			speaker: 2,
-			content: `<a data-id='${token_id}' id='token_link'>${token_name}</a>'s turn. Please make your move.`,
-			whisper: game.combat.combatant.players.map((u) => u.data._id),
-		},
-		{}
-	);
+	let target_players: Array<string> = game.combat.combatant.players.map(u => u.id);
+
+	if(target_players.length != 0) {
+		ChatMessage.create(
+			{
+				user: game.user,
+				content: `<a data-id='${token_id}' id='token_link'>${token_name}</a>'s turn. Please make your move.`,
+				whisper: target_players,
+			},
+			{}
+		);
+	} else {
+		return;
+	}
+
+
 });
 
 Hooks.on("renderChatMessage", (message, html) => {
