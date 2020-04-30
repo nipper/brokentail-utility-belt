@@ -1,4 +1,4 @@
-const array_rotator = function (array_to_rotate: Any[], n: number): Any[] {
+const array_rotator = function (array_to_rotate, n: number) {
   return array_to_rotate
     .slice(n, array_to_rotate.length)
     .concat(array_to_rotate.slice(0, n));
