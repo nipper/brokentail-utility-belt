@@ -83,14 +83,13 @@ export class CombatWindow extends Application {
 
     activateListeners(html) {
         const targets = $(html).find(".combat_window_actor");
-        targets.on("mouseenter", (_) => {
-            console.log("enter");
-        });
         targets.on("click", (ev) => {
-            let combatantId = ev.target.id;
-            game.combat.combatants
-                .filter((u) => u._id === combatantId)[0]
-                .actor.sheet.render(true);
+            let combatantId = ev.target.getAttribute("data-id");
+            game.combat
+                .combatants
+                .filter(u => u.actor.id === combatantId)[0]
+                .actor.sheet.render(true)
+
         });
     }
 }
