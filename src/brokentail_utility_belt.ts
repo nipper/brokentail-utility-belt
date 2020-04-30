@@ -88,7 +88,7 @@ Hooks.on("updateCombat", async (combat) => {
   }
 
   let token_name = combat.combatant.name;
-  let token_id = game.combat.combatant._id;
+  let token_id = game.combat.combatant.actor.id;
   let target_players: Array<string> = game.combat.combatant.players.map(
     (u) => u.id
   );

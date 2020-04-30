@@ -1,14 +1,13 @@
-<div>
+<div class="but-combat-body">
     {{#if isCombat}}
+        <nav class="flexrow">
         {{#each combatants}}
-            {{#if this.use_icons}}
-                <img src="{{this.icon_url}}"  width = "50px" height="50px" alt="{{this.token_name}}">
-            {{/if}}
             <span class="combatant {{#if this.is_dead}}but-dead-combatant{{/if}}">
-            <a data-id="{{this.actor.id}}" class="combat_window_actor">{{this.token.name}}
+            <a data-id="{{this.tokenId}}" class="combat_window_actor">{{this.token.name}}
                 <span class="{{#if this.is_blooded}}but-blooded{{/if}}">{{this.chart_block}}</span></a>
             </span> {{#unless @last}}|{{/unless}}
         {{/each}}
+        </nav>
     {{/if}}
     {{#unless isCombat}}
         <em>{{message}}</em>

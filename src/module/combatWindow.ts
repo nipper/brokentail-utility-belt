@@ -96,18 +96,16 @@ export class CombatWindow extends Application {
   }
 
   activateListeners(html) {
-    if (!game.user.isGM) {
-      return;
-    }
     const targets = $(html).find(".combat_window_actor");
     targets.on("click", (ev) => {
       let combatantId = ev.target.getAttribute("data-id");
       let combatant = game.combat.getCombatantByToken(combatantId);
-      combatant;
-      if (combatant.players.map((u) => u.id).include(combatantId))
-        game.combat.combatants
-          .filter((u) => u.actor.id === combatantId)[0]
-          .actor.sheet.render(true);
+      if (
+        combatant.players.map((u) => u.id).includes(game.user.id) ||
+        game.user.isGM
+      ) {
+        combatant.actor.sheet.render(true);
+      }
     });
   }
 }
