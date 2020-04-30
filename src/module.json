@@ -6,9 +6,11 @@
 	"minimumCoreVersion": "0.5.5",
 	"compatibleCoreVersion": "0.5.5",
 	"author": "Moerill",
+
 	"scripts": [],
+	"styles": ["brokentail_utility_belt.css"],
 	"esmodules": ["brokentail_utility_belt.js"],
 	"url": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys",
 	"manifest": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys/raw/master/module.json",
 	"download": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys/-/raw/v1.5/dist/layer-hotkeys.zip"
-}t
+}
