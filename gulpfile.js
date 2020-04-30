@@ -191,7 +191,8 @@ function buildWatch() {
 	gulp.watch(
 		['src/fonts', 'src/lang', 'src/templates', 'src/*.json'],
 		{ ignoreInitial: false },
-		copyFiles
+		copyFiles,
+		copyToGame
 	);
 }
 
@@ -485,11 +486,20 @@ function gitTag() {
 	);
 }
 
+async function copyToGame() {
+	gulp.src(['dist/**/*'])
+		.pipe(gulp.dest('/Users/sphinizy/Documents/Projects/foundry/foundry_data/nipper/Data/modules/brokentail-utility-belt'));
+
+}
+
+
 const execGit = gulp.series(gitAdd, gitCommit, gitTag);
 
 const execBuild = gulp.parallel(buildTS, buildLess, buildSASS, copyFiles);
 
-exports.build = gulp.series(clean, execBuild);
+
+
+exports.build = gulp.series(clean, execBuild, copyToGame);
 exports.watch = buildWatch;
 exports.clean = clean;
 exports.link = linkUserData;
