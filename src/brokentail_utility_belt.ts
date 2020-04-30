@@ -11,122 +11,122 @@
  */
 
 // Import TypeScript modules
-import { registerSettings } from './module/settings.js';
-import { preloadTemplates } from './module/preloadTemplates.js';
+import { registerSettings } from "./module/settings.js";
+import { preloadTemplates } from "./module/preloadTemplates.js";
 import { CombatWindow } from "./module/combatWindow.js";
 
 let combatWindow;
 
 Hooks.once("ready", () => {
-	combatWindow = new CombatWindow();
+  combatWindow = new CombatWindow();
 });
 Hooks.on("updateCombatant", () => {
-	combatWindow.render();
+  combatWindow.render();
 });
 
 Hooks.on("updateCombat", () => {
-	combatWindow.render();
+  combatWindow.render();
 });
 
 /* ------------------------------------ */
 /* Initialize module					*/
 /* ------------------------------------ */
 Hooks.once("init", async function () {
-	console.log("brokentail-utility-belt | Initializing brokentail-utility-belt");
+  console.log("brokentail-utility-belt | Initializing brokentail-utility-belt");
 
-	// Assign custom classes and constants here
+  // Assign custom classes and constants here
 
-	// Register custom module settings
-	registerSettings();
+  // Register custom module settings
+  registerSettings();
 
-	// Preload Handlebars templates
-	await preloadTemplates();
+  // Preload Handlebars templates
+  await preloadTemplates();
 
-	// Register custom sheets (if any)
+  // Register custom sheets (if any)
 });
 
 /* ------------------------------------ */
 /* Setup module							*/
 /* ------------------------------------ */
 Hooks.once("setup", function () {
-	// Do anything after initialization but before
-	// ready
+  // Do anything after initialization but before
+  // ready
 });
 
 /* ------------------------------------ */
 /* When ready							*/
 /* ------------------------------------ */
 Hooks.once("ready", function () {
-	// Do anything once the module is ready
+  // Do anything once the module is ready
 });
 
 Hooks.on("renderCombatTracker", (app, html) => {
-	if (!game.combat) {
-		return;
-	}
-	console.log("rendering combat track");
-	const combatTrackerButton =
-		'<a id=\'but-combatTrackerBtn\' title="Open Combat Tracker" data-control="openTracker">\n' +
-		'                <i class="fas fa-external-link-alt"></i>\n' +
-		"            </a>";
+  if (!game.combat) {
+    return;
+  }
+  console.log("rendering combat track");
+  const combatTrackerButton =
+    '<a id=\'but-combatTrackerBtn\' title="Open Combat Tracker" data-control="openTracker">\n' +
+    '                <i class="fas fa-external-link-alt"></i>\n' +
+    "            </a>";
 
-	if (game.user.isGM) {
-		html.find("a.combat-create").after(combatTrackerButton);
-	} else {
-		const combatTrackerRow = `<nav class='encounters flexrow'>${combatTrackerButton}</nav>`;
-		html.find("header#combat-round nav").after(combatTrackerRow);
-	}
-	html.find("#but-combatTrackerBtn").click(async (ev) => {
-		ev.stopPropagation();
-		combatWindow.render(true);
-	});
+  if (game.user.isGM) {
+    html.find("a.combat-create").after(combatTrackerButton);
+  } else {
+    const combatTrackerRow = `<nav class='encounters flexrow'>${combatTrackerButton}</nav>`;
+    html.find("header#combat-round nav").after(combatTrackerRow);
+  }
+  html.find("#but-combatTrackerBtn").click(async (ev) => {
+    ev.stopPropagation();
+    combatWindow.render(true);
+  });
 });
 
 // Add any additional hooks if necessary
 Hooks.on("updateCombat", async (combat) => {
-	if(!game.user.isGM){
-		return;
-	}
+  if (!game.user.isGM) {
+    return;
+  }
 
-	let token_name = combat.combatant.name;
-	let token_id = game.combat.combatant._id;
-	let target_players: Array<string> = game.combat.combatant.players.map(u => u.id);
+  let token_name = combat.combatant.name;
+  let token_id = game.combat.combatant._id;
+  let target_players: Array<string> = game.combat.combatant.players.map(
+    (u) => u.id
+  );
 
-	if(target_players.length != 0) {
-		ChatMessage.create(
-			{
-				user: game.user,
-				content: `<a data-id='${token_id}' id='token_link'>${token_name}</a>'s turn. Please make your move.`,
-				whisper: target_players,
-			},
-			{}
-		);
-	} else {
-		return;
-	}
-
-
+  if (target_players.length != 0) {
+    ChatMessage.create(
+      {
+        user: game.user,
+        content: `<a data-id='${token_id}' id='token_link'>${token_name}</a>'s turn. Please make your move.`,
+        whisper: target_players,
+      },
+      {}
+    );
+  } else {
+    return;
+  }
 });
 
 Hooks.on("renderChatMessage", (message, html) => {
-	let chatCard = html.find("#token_link");
-	if (chatCard.length === 0) {
-		return;
-	}
-	// adding click events to the buttons, this gets redone since they can break through rerendering of the card
-	html.find("#token_link").click(async (ev) => {
-		ev.stopPropagation();
-		let combatant_id = ev.target.dataset.id;
-		game.combat.combatants
-			.filter((u) => u._id === combatant_id)[0]
-			.actor.sheet.render(true);
-	});
+  let chatCard = html.find("#token_link");
+  if (chatCard.length === 0) {
+    return;
+  }
+  // adding click events to the buttons, this gets redone since they can break through rerendering of the card
+  html.find("#token_link").click(async (ev) => {
+    ev.stopPropagation();
+    let combatant_id = ev.target.dataset.id;
+    game.combat.combatants
+      .filter((u) => u._id === combatant_id)[0]
+      .actor.sheet.render(true);
+  });
 });
 
 Hooks.once("init", async function () {
-	window.addEventListener("keydown", (event) => {
-		if(event.keyCode === 82 && event.shiftKey){
-			console.log("R")
-		}
-	});
+  window.addEventListener("keydown", (event) => {
+    if (event.keyCode === 82 && event.shiftKey) {
+      console.log("R");
+    }
+  });
 });
