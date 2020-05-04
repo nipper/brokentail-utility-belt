@@ -6,6 +6,11 @@
 .but-combat-window {
   min-height: 65px !important;
 }
+
+.but-combat-window img {
+  border: 0;
+  max-width: 20px;
+}
 .but-blooded {
   color: red;
 }

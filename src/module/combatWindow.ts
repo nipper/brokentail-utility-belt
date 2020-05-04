@@ -11,27 +11,28 @@ function decorate_combatants(combatant) {
   let hp_step: number = Math.floor(current_hp / (max_hp / 5));
   const chart_blocks: String[] = ["", "▁", "▂", "▃", "▆", "▇"];
 
-  if (game.user.isGM) {
+  if (game.user.isGM || combatant.players.length !== 0) {
     combatant.is_blooded = is_blooded;
+    combatant.max_hp = max_hp;
+    combatant.ac = combatant.actor.data.data.attributes.ac;
+    combatant.current_hp = current_hp;
     combatant.chart_block = chart_blocks[hp_step];
     combatant.is_dead = current_hp <= 0;
-  } else {
-    combatant.is_blooded = false;
-    combatant.chart_block = "";
-    combatant.is_dead = false;
   }
   combatant.icon_url = combatant.token.img;
   combatant.use_icons = game.settings.get("brokentail-utility-belt", "useIcon");
 
   switch (hp_step) {
     case 5:
-      combatant.bar_color = "green";
+      combatant.bar_color = "good";
       break;
     case 4:
-      combatant.bar_color = "yellow";
+      combatant.bar_color = "warning";
+    case 3:
+      combatant.bar_color = "warning";
       break;
     default:
-      combatant.bar_color = "red";
+      combatant.bar_color = "danger";
   }
 
   return combatant;
