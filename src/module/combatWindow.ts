@@ -52,7 +52,7 @@ export class CombatWindow extends Application {
       "modules/brokentail-utility-belt/templates/combat_window.hbs";
     options.popOut = true;
     options.resizable = true;
-    options.classes = ["but-combat-window", "sidebar-popout"];
+    options.classes = ["sidebar-popout", "but-combat-window"];
     options.left = 115;
     options.top = 70;
     options.width = 400;

@@ -1,18 +1,22 @@
 <div class="but-combat-body">
     {{#if isCombat}}
-        <nav class="flexrow">
-            {{#each combatants}}
-                <div class="combatant {{#if this.is_dead}}but-dead-combatant{{/if}}">
+    <nav class="flexrow">
+        {{#each combatants}}
+        <div class="but-combatant {{#if this.is_dead}}but-dead-combatant{{/if}}">
 
-                 <div>
-            <a data-id="{{this.tokenId}}" class="combat_window_actor">{{this.token.name}}</a></div>
-               <div>    {{#if this.max_hp}}
-                   ({{this.current_hp}}/{{this.max_hp}}) <img src="modules/brokentail-utility-belt/assets/shield.svg"
-                                                              alt="Armor Class" height="10px" width="8px"> {{ this.ac.value }} {{/if}}
-                   <span class="{{#if this.is_blooded}}but-blooded{{/if}}">{{this.chart_block}}</span> </div>
+            <div>
+                <a data-id="{{this.tokenId}}" class="combat_window_actor">{{this.token.name}}</a>
             </div>
-            {{/each}}
-        </nav>
+            <div>
+                {{#if this.max_hp}}
+                ({{this.current_hp}}/{{this.max_hp}}) <img src="modules/brokentail-utility-belt/assets/shield.svg"
+                                                           alt="Armor Class" height="10px"
+                                                           width="8px"> {{ this.ac.value }}
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </nav>
     {{/if}}
     {{#unless isCombat}}
         <em>{{message}}</em>
