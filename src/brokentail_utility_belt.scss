@@ -4,7 +4,20 @@
 /* ------------------------------------ */
 
 .but-combat-window {
-  min-height: 40px !important;
+  min-height: 70px !important;
+  height: 80px;
+}
+
+.but-flex-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.but-flex-item {
+  flex: 1;
+  min-width: 100px;
 }
 
 .but-combat-window img {

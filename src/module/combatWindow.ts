@@ -45,9 +45,9 @@ export class CombatWindow extends Application {
 
   static get defaultOptions() {
     const options = super.defaultOptions;
-    options.title = "Combat Order";
+    options.title = "Combat Tracker";
     options.id = "combat_window";
-    options.minimizable = true;
+    options.minimizable = false;
     options.template =
       "modules/brokentail-utility-belt/templates/combat_window.hbs";
     options.popOut = true;
