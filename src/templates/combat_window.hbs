@@ -1,10 +1,9 @@
-<span class="but-combat-body">
+<div class="but-combat-body">
     {{#if isCombat}}
-    <nav class="but-flex-list">
+    <div class="but-flex-list">
         {{#each combatants}}
-        <span class="but-combatant {{#if this.is_dead}}but-dead-combatant{{/if}} but-flex-item">
-
-            <div>
+        <div class="but-combatant {{#if this.is_dead}}but-dead-combatant{{/if}} but-flex-item">
+            <div class="but-truncate">
                 <a data-id="{{this.tokenId}}" class="combat_window_actor">{{this.token.name}}</a>
             </div>
             <div>
@@ -14,13 +13,13 @@
                <i class="fas fa-shield-alt"></i>{{ this.ac.value }}
                 {{/if}}
             </div>
-        </span>
+        </div>
 
         {{/each}}
-    </nav>
+    </div>
     {{/if}}
     {{#unless isCombat}}
         <em>{{message}}</em>
     {{/unless}}
 
-</span>
+</div>
