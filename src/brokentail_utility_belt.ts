@@ -20,6 +20,9 @@ let combatWindow;
 Hooks.once("ready", () => {
   combatWindow = new CombatWindow();
 });
+Hooks.on("updateToken", () => {
+  combatWindow.render();
+});
 Hooks.on("updateCombatant", () => {
   combatWindow.render();
 });
