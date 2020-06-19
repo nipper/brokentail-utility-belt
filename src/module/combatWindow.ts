@@ -90,6 +90,7 @@ export class CombatWindow extends Application {
       isCombat: true,
       combatants: combatants,
       empty: combatants.length === 0,
+      isGm: game.user.isGM,
     };
   }
 
@@ -104,6 +105,12 @@ export class CombatWindow extends Application {
       ) {
         combatant.actor.sheet.render(true);
       }
+    });
+
+    const combatTargets = $(html).find("but-combat-control");
+
+    targets.on("click", (ev) => {
+      console.log(ev);
     });
   }
 }

@@ -1,6 +1,14 @@
 <div class="but-combat-body">
     {{#if isCombat}}
     <div class="but-flex-list">
+        {{#if isGm}}
+        <div id="combat-controls-but" class="directory-footer flexrow but-flex-item">
+            <a class="but-combat-control" title="Previous Turn" data-control="previousTurn"><i class="fas fa-arrow-left"></i></a>
+            <a class="but-combat-control" title="Next Turn" data-control="nextTurn"><i class="fas fa-arrow-right"></i></a>
+        </div>
+        {{/if}}
+
+
         {{#each combatants}}
         <div class="but-combatant {{#if this.is_dead}}but-dead-combatant{{/if}} but-flex-item">
             <div class="but-truncate">

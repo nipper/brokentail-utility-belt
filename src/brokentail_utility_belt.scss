@@ -6,7 +6,7 @@
 .but-combat-window {
   min-height: 70px !important;
   height: 80px;
-  min-width: 135px;
+  min-width: 150px;
 }
 
 $flex-top-margin: 10px;
@@ -23,6 +23,12 @@ $flex-top-margin: 10px;
   flex-basis: 125px;
   margin-top: 10px;
   min-width: $flex-top-margin;
+}
+
+.but-vert-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .but-truncate {
