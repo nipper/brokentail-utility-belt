@@ -1,16 +1,16 @@
 {
   "name": "brokentail-utility-belt",
   "title": "Brokentail's Utilities",
-  "description": "Adds customizable hotkeys for switching between layers and tools.",
+  "description": "Adds a smaller combat woindow",
   "version": "1.5",
-  "minimumCoreVersion": "0.5.5",
-  "compatibleCoreVersion": "0.5.5",
-  "author": "Moerill",
+  "minimumCoreVersion": "0.7.5",
+  "compatibleCoreVersion": "0.7.5",
+  "author": "Brokentail",
 
   "scripts": [],
   "styles": ["brokentail_utility_belt.css"],
   "esmodules": ["brokentail_utility_belt.js"],
-  "url": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys",
-  "manifest": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys/raw/master/module.json",
+  "url": "https://github.com/nipper/brokentail-utility-belt",
+  "manifest": "https://github.com/nipper/brokentail-utility-belt/blob/master/src/module.json",
   "download": "https://gitlab.com/moerills-fvtt-modules/layer-hotkeys/-/raw/v1.5/dist/layer-hotkeys.zip"
 }
